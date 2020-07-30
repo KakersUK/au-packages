@@ -2,11 +2,9 @@
 
 # Package Parameters, fail on required items.
 $pp = Get-PackageParameters
-if (!$pp['IKEY']) { throw "The integration key (IKEY) variable has not been set, exiting installer." }
-if (!$pp['SKEY']) { throw "The secret key (SKEY) variable has not been set, exiting installer." }
-if (!$pp['APIHOST']) { throw "The API hostname (APIHOST) variable has not been set, exiting installer." }
-if (!$pp['PROXYHOST']) { $pp['PROXYHOST'] = '' }
-if (!$pp['PROXYPORT']) { $pp['PROXYPORT'] = '' }
+if (!$pp['IKEY']) { throw "The integration key (IKEY) parameter has not been set, exiting installer." }
+if (!$pp['SKEY']) { throw "The secret key (SKEY) parameter has not been set, exiting installer." }
+if (!$pp['HOST']) { throw "The API hostname (APIHOST) parameter has not been set, exiting installer." }
 if (!$pp['FAILOPEN']) { $pp['FAILOPEN'] = '#1' }
 if (!$pp['AUTOPUSH']) { $pp['AUTOPUSH'] = '#1' }
 if (!$pp['RDPONLY']) { $pp['RDPONLY'] = '#0' }
@@ -19,12 +17,18 @@ if (!$pp['UAC_OFFLINE']) { $pp['UAC_OFFLINE'] = '#1' }
 if (!$pp['UAC_OFFLINE_ENROLL']) { $pp['UAC_OFFLINE_ENROLL'] = '#1' }
 
 # Open silentArgs and set required items.
-$silentArgs = "/S /V`" /qn IKEY=`"$($pp['IKEY'])`" SKEY=`"$($pp['SKEY'])`" HOST=`"$($pp['APIHOST'])`" FAILOPEN=`"$($pp['FAILOPEN'])`" AUTOPUSH=`"$($pp['AUTOPUSH'])`" RDPONLY=`"$($pp['RDPONLY'])`" SMARTCARD=`"$($pp['SMARTCARD'])`" UAC_PROTECTMODE=`"$($pp['UAC_PROTECTMODE'])`""
+$silentArgs = "/S /V`" /qn IKEY=`"$($pp['IKEY'])`" SKEY=`"$($pp['SKEY'])`" HOST=`"$($pp['HOST'])`" FAILOPEN=`"$($pp['FAILOPEN'])`" AUTOPUSH=`"$($pp['AUTOPUSH'])`" RDPONLY=`"$($pp['RDPONLY'])`" SMARTCARD=`"$($pp['SMARTCARD'])`" UAC_PROTECTMODE=`"$($pp['UAC_PROTECTMODE'])`""
 
 # Add optional parameters if set.
-if ($pp['PROXYHOST'] -ne '' -And $pp['PROXYPORT'] -ne '') { $silentArgs += " PROXYHOST=`"$($pp['PROXYHOST'])`" PROXYPORT=`"$($pp['PROXYPORT'])`"" }
 if ($pp['SMARTCARD'] -eq '#1') { $silentArgs += " WRAPSMARTCARD=`"$($pp['WRAPSMARTCARD'])`"" }
 if ($pp['UAC_PROTECTMODE'] -eq '#1' -Or $pp['UAC_PROTECTMODE'] -eq '#2') { $silentArgs += " UAC_OFFLINE=`"$($pp['UAC_OFFLINE'])`" UAC_OFFLINE_ENROLL=`"$($pp['UAC_OFFLINE_ENROLL'])`"" }
+
+# Set parameters if not null.
+if ($null -ne $pp['PROXYHOST'] -And $null -ne $pp['PROXYPORT']) { $silentArgs += " PROXYHOST=`"$($pp['PROXYHOST'])`" PROXYPORT=`"$($pp['PROXYPORT'])`"" }
+if ($null -ne $pp['ENABLEOFFLINE']) { $silentArgs += " ENABLEOFFLINE=`"$($pp['ENABLEOFFLINE'])`"" }
+if ($null -ne $pp['USERNAMEFORMAT']) { $silentArgs += " USERNAMEFORMAT=`"$($pp['USERNAMEFORMAT'])`"" }
+if ($null -ne $pp['LOGFILE_MAXCOUNT']) { $silentArgs += " LOGFILE_MAXCOUNT=`"$($pp['LOGFILE_MAXCOUNT'])`"" }
+if ($null -ne $pp['LOGFILE_MAXSIZEMB']) { $silentArgs += " LOGFILE_MAXSIZEMB=`"$($pp['LOGFILE_MAXSIZEMB'])`"" }
 
 # Close silent Args
 $silentArgs += '"'

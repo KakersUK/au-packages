@@ -4,11 +4,11 @@
   <metadata>
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>duo-win-login</id>
-    <version>4.1.1</version>
+    <version>1.0.0</version>
     <owners>Jamie Scott</owners>
     <packageSourceUrl>https://github.com/KakersUK/au-packages/tree/master/duo-win-login</packageSourceUrl>
     <!-- == SOFTWARE SPECIFIC SECTION == -->
-    <title>Duo</title>
+    <title>Duo Windows Logon</title>
     <authors>Duo Security, Inc.</authors>
     <projectUrl>https://duo.com/</projectUrl>
     <projectSourceUrl>https://duo.com/docs/checksums#duo-windows-logon</projectSourceUrl>
@@ -21,6 +21,69 @@
 Multi-factor authentication from Cisco's Duo protects your applications by using a second source of validation, like a phone or token, to verify user identity before granting access. Duo is engineered to provide a simple, streamlined login experience for every user and application, and as a cloud-based solution, it integrates easily with your existing technology.
     </description>
     <summary>Multi-factor autentication application for RDP</summary>
+    <description>This package installs the Duo Authentication for Windows Logon package from the [pre-compiled files](https://duo.com/docs/checksums#duo-windows-logon) supplied by [Duo Security](https://duo.com/). 
+
+**Important**: The `IKEY`, `SKEY` and `HOST` parameters must be set otherwise installation will fail.
+
+## Package installation defaults
+
+By default, installation of this package:
+
+* Will enable fail open.
+* Will enable auto push.
+* Will protect both local login and RDP.
+* Will *NOT* enable Smart Card support.
+* Will *NOT* protect UAC protection.
+
+## Package Parameters
+
+Defaults are listed in {brackets}, a full list of configuration options are availabe in the [Duo documentation](https://help.duo.com/s/article/1090?language=en_US).
+
+**Please Note**: To have choco remember parameters on upgrade, be sure to set `choco feature enable -n=useRememberedArgumentsForUpgrades`.
+
+Required and default settings:
+
+* `IKEY` - Your Duo RDP application's integration key.
+
+* `SKEY` - Your Duo RDP application's secret key.
+
+* `APIHOST` - Your Duo RDP application's secret key.
+
+* `AUTOPUSH` - `#1` to automatically send a push request, or `#0` to disable automatic push {#1}.
+
+* `FAILOPEN` - `#1` to allow access when Duo's service is unreachable, or `#0` to block access without Duo MFA {#1}.
+
+* `RDPONLY` - `#1` to only require Duo for remote logons, or `#0` to require Duo for console and RDP logons {#0}.
+
+* `SMARTCARD` - `#1` to allow smart card login as an alternative to Duo, or `#0` to disable the Windows smart card provider {#0}.
+
+* `WRAPSMARTCARD` - `#1` to require Duo after smart card primary logon, or `#0` to allow smart card logon without Duo approval afterward ({#1} and also requires SMARTCARD to be set to #1).
+
+* `UAC_PROTECTMODE` - 0 to respect existing Duo authentication control around logon, 1 to Disable Duo at logon and only prompt during User Elevation, or 2 to enforce Duo at logon and User Elevation.
+
+* `UAC_OFFLINE` - 0 to disable Offline Access for User Elevation, or 1 to enable Offline Access for User Elevation.
+
+* `UAC_OFFLINE_ENROLL` - 0 to prevent Offline Enrollment during User Elevation, or 1 to Enable Offline Enrollment during User Elevation.
+
+Additional Options:
+* `PROXYHOST` - the hostname or IP address of an upstream HTTP proxy server for Duo communications (`PROXYPORT` must be set).
+
+* `PROXYPORT` - The port for HTTP proxy communications (`PROXYHOST` must be set).
+
+* `ENABLEOFFLINE` - `#1` to enable offline access (subject to the configuration in the Admin Panel), or `#0` to completely disable offline access on the target system .
+
+* `USERNAMEFORMAT` - The username format sent to Duo. One of: `#0` for `sAMAccountName` (`narroway`), `#1` for the NTLM domain and username (`ACME\narroway`), or `#2` for the `userPrincipalName` (`[narroway@acme.corp](mailto:narroway@acme.corp)`).
+
+* `LOGFILE_MAXCOUNT` - Number of rotated log files to be maintained.
+
+* `LOGFILE_MAXSIZEMB` - Size of rotated log file to be maintained in megabytes (MB).
+
+These parameters can be passed to the installer with the use of `-params`.
+
+For example :
+
+`choco install duo-win-login -dv -s . -params '"/IKEY:DIXXXXXXXXXXXXXXXXXXXX /SKEY:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx /HOST:api-xxxxxxxx.duosecurity.com"'`
+    </description>    
     <releaseNotes>https://duo.com/docs/rdp-notes</releaseNotes>
     <copyright>2020 Duo</copyright>
     <dependencies>
