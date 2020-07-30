@@ -1,6 +1,6 @@
 
 [![](https://ci.appveyor.com/api/projects/status/github/KakersUK/au-packages?svg=true)](https://ci.appveyor.com/project/KakersUK/au-packages)
-[![1](https://img.shields.io/badge/AU%20packages-1-red.svg)](#ok)
+[![1](https://img.shields.io/badge/AU%20packages-1-blue.svg)](#ok)
 [![](http://transparent-favicon.info/favicon.ico)](#)
 [chocolatey/KakersUK](https://chocolatey.org/profiles/KakersUK)
 

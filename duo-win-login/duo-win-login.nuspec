@@ -4,7 +4,7 @@
   <metadata>
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>duo-win-login</id>
-    <version>1.0.0</version>
+    <version>4.1.1</version>
     <owners>Jamie Scott</owners>
     <packageSourceUrl>https://github.com/KakersUK/au-packages/tree/master/duo-win-login</packageSourceUrl>
     <!-- == SOFTWARE SPECIFIC SECTION == -->
@@ -17,9 +17,6 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://duo.com/docs/rdp</docsUrl>
     <tags>2FA MFA security authentication admin</tags>
-    <description>
-Multi-factor authentication from Cisco's Duo protects your applications by using a second source of validation, like a phone or token, to verify user identity before granting access. Duo is engineered to provide a simple, streamlined login experience for every user and application, and as a cloud-based solution, it integrates easily with your existing technology.
-    </description>
     <summary>Multi-factor autentication application for RDP</summary>
     <description>This package installs the Duo Authentication for Windows Logon package from the [pre-compiled files](https://duo.com/docs/checksums#duo-windows-logon) supplied by [Duo Security](https://duo.com/). 
 

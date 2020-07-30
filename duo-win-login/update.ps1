@@ -1,4 +1,5 @@
 ﻿import-module au
+. $PSScriptRoot\..\_scripts\all.ps1
 
 $releases = "https://duo.com/docs/checksums"
 
@@ -9,9 +10,16 @@ function global:au_SearchReplace {
       "(?i)(^\s*checksum\s*=\s*)('.*')"   = "`$1'$($Latest.Checksum32)'"
       "(?i)(^\s*checksumType\s*=\s*)('.*')" = "`$1'$($Latest.ChecksumType32)'"
     }
+    
     ".\duo-win-login.nuspec" = @{
       "\<version\>.+" = "<version>$($Latest.Version)</version>"
       "\<copyright\>.+" = "<copyright>$($Latest.Copyright)</copyright>"
+    }
+
+    ".\legal\VERIFICATION.txt" = @{
+      "(?i)(\s+x32:).*"            = "`${1} $($Latest.URL32)"
+      "(?i)(checksum32:).*"        = "`${1} $($Latest.Checksum32)"
+      "(?i)(Get-RemoteChecksum).*" = "`${1} $($Latest.URL32)"
     }
   }
 }

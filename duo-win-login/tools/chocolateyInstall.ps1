@@ -2,9 +2,9 @@
 
 # Package Parameters, fail on required items.
 $pp = Get-PackageParameters
-if (!$pp['IKEY']) { throw "The integration key (IKEY) parameter has not been set, exiting installer." }
-if (!$pp['SKEY']) { throw "The secret key (SKEY) parameter has not been set, exiting installer." }
-if (!$pp['HOST']) { throw "The API hostname (APIHOST) parameter has not been set, exiting installer." }
+if (!$pp['IKEY']) { $pp['IKEY'] = '' }
+if (!$pp['SKEY']) { $pp['SKEY'] = '' }
+if (!$pp['HOST']) { $pp['HOST'] = '' }
 if (!$pp['FAILOPEN']) { $pp['FAILOPEN'] = '#1' }
 if (!$pp['AUTOPUSH']) { $pp['AUTOPUSH'] = '#1' }
 if (!$pp['RDPONLY']) { $pp['RDPONLY'] = '#0' }
