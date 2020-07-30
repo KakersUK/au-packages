@@ -4,7 +4,7 @@
   <metadata>
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>duo-win-login</id>
-    <version>1.0.0</version>
+    <version>4.1.1</version>
     <owners>Jamie Scott</owners>
     <packageSourceUrl>https://github.com/KakersUK/au-packages/tree/master/duo-win-login</packageSourceUrl>
     <!-- == SOFTWARE SPECIFIC SECTION == -->
