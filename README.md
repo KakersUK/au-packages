@@ -1,5 +1,4 @@
 
-[![1](https://img.shields.io/badge/AU%20packages-1-blue.svg)](#ok)
 [![](https://ci.appveyor.com/api/projects/status/github/KakersUK/au-packages?svg=true)](https://ci.appveyor.com/project/KakersUK/au-packages)
 [Update status](https://gist.github.com/KakersUK/e471d9c7174f558f0de1e028f7e94ef4)
 [![](http://transparent-favicon.info/favicon.ico)](#)
