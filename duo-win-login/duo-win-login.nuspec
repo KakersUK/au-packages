@@ -12,7 +12,7 @@
     <authors>Duo Security, Inc.</authors>
     <projectUrl>https://duo.com/</projectUrl>
     <projectSourceUrl>https://duo.com/docs/checksums#duo-windows-logon</projectSourceUrl>
-    <iconUrl>https://raw.githubusercontent.com/KakersUK/au-packages/master/duo-win-login/icons/duo-logo.jpg</iconUrl>
+    <iconUrl>https://cdn.statically.io/gh/KakersUK/au-packages/master/_icons/duo.png</iconUrl>
     <licenseUrl>hhttps://duo.com/legal/terms</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://duo.com/docs/rdp</docsUrl>
