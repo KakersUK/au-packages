@@ -6,7 +6,7 @@
     <id>duo-win-login</id>
     <version>4.1.1</version>
     <owners>Jamie Scott</owners>
-    <packageSourceUrl>https://github.com/KakersUK/au-packages/tree/master/duo-win-login</packageSourceUrl>
+    <packageSourceUrl>https://github.com/porteighty/au-packages/tree/master/duo-win-login</packageSourceUrl>
     <!-- == SOFTWARE SPECIFIC SECTION == -->
     <title>Duo Windows Logon</title>
     <authors>Duo Security, Inc.</authors>
